@@ -1,9 +1,14 @@
 <Solution>
+  <Folder Name="/chatrabash.server/">
+    <Project Path="../API/API.csproj" Id="efa940b9-6c5a-4a70-90fa-28d8b0726f05" />
+    <Project Path="../Application/Application.csproj" Id="405f6460-2bbd-49b1-baf3-db03c1078c13" />
+    <Project Path="../Domain/Domain.csproj" Id="38387024-a43a-4f9c-ab0b-9e2ba5d854a9" />
+    <Project Path="../Persistence/Persistence.csproj" Id="f92120b0-5e7f-4c73-9069-85eb49c6d9a6" />
+  </Folder>
   <Project Path="Chatrabash.Client/chatrabash.client.esproj">
     <Build />
     <Deploy />
   </Project>
-  <Project Path="Chatrabash/Chatrabash.Server.csproj" />
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
