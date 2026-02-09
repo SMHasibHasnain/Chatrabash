@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🏠 Chatrabash (ছাত্রাবাস)
-### The Modern SaaS Platform for Smart Hostel Management
+# 🏠 Chatrabash - Your Space, Our System
+### Automated Solution for Modern Dormitories
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-.NET%2010%20%7C%20React-orange.svg?style=flat-square)]()
