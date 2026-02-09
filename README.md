@@ -4,7 +4,7 @@
 ### The Modern SaaS Platform for Smart Hostel Management
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-.NET%210%20%7C%20React-orange.svg?style=flat-square)]()
+[![Platform](https://img.shields.io/badge/platform-.NET%2010%20%7C%20React-orange.svg?style=flat-square)]()
 [![Status](https://img.shields.io/badge/status-Active%20Development-success.svg?style=flat-square)]()
 
 ---
