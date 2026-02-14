@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.Rooms.Queries;
 using Application.Rooms.Dtos;
 using Application.Rooms.Commands;
+using Application.Core;
 
 namespace API.Controllers;
 
@@ -29,7 +30,8 @@ public class RoomsController (AppDbContext context) : BaseController
     [HttpPost]
     public async Task<ActionResult<string>> CreateNewRoom([FromBody]Create.Command command) 
     {
-        return Ok(await Mediator.Send(command));
+        var result = await Mediator.Send(command);
+        return HandleResult(result);
     }
 
 

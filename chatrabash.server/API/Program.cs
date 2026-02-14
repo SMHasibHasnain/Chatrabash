@@ -21,8 +21,11 @@ builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(MappingProfiles).Assemb
 
 builder.Services.AddValidatorsFromAssemblyContaining<Application.Rooms.Validators.Create>();
 
+builder.Services.AddTransient<API.Middleware.ExceptionMiddleware>();
 
 var app = builder.Build();
+
+app.UseMiddleware<API.Middleware.ExceptionMiddleware>();
 
 app.MapControllers();
 

@@ -18,7 +18,6 @@ public class ValidatorBehavior<TRequest, TResponse>(IValidator<TRequest>? valida
         if(!ValidationResult.IsValid) throw new ValidationException(ValidationResult.Errors);
 
         return await next(); 
-
     }
 }
 
