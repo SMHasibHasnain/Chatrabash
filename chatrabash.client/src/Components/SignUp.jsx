@@ -4,7 +4,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { handleRegister, handleUpdateProfile, handleGoogleLogIn } = useContext(AuthContext);
+  const { handleRegister, handleUpdateProfile } = useContext(AuthContext);
   const [role, setRole] = useState("Student");
   const [error, setError] = useState("");
 
@@ -51,11 +51,6 @@ const SignUp = () => {
       .catch((err) => setError(err.message));
   };
 
-  const handleGLogIn = () => {
-    handleGoogleLogIn()
-      .then(() => navigate("/"))
-      .catch((err) => setError(err.message));
-  };
 
   return (
     <div className="py-4 bg-gradient-to-br from-blue-100 via-blue-50 to-white flex items-center justify-center px-4 min-h-screen">
