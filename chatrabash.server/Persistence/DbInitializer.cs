@@ -50,10 +50,21 @@ public class DbInitializer
 
             foreach (var user in users)
             {
-                await userManager.CreateAsync(user, "Pa$$w0rd");
+                var result = await userManager.CreateAsync(user, "Pa$$w0rd");
+                
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        Console.WriteLine($"Error creating user {user.UserName}: {error.Description}");
+                    }
+                }
+                else 
+                {
+                    Console.WriteLine($"User created: {user.UserName}");
+                }
             }
         }
-
 
         if(context.Rooms.Any()) return;
         await context.Rooms.AddRangeAsync(_rooms);
