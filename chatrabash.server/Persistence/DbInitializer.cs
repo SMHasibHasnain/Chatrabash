@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.DataContracts;
 using Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence;
@@ -36,8 +37,24 @@ public class DbInitializer
         new Room { RoomNumber = "401", FloorNo = 4, SeatCapacity = 4, SeatAvailable = 3, IsAttachedBathroomAvailable = 0, IsBalconyAvailable = 1, IsAcAvailable = false, IsActive = true }
     };
 
-    public static async Task SeedData(AppDbContext context)
+    public static async Task SeedData(AppDbContext context, UserManager<User>userManager)
     {
+        if(!userManager.Users.Any())
+        {
+            var users = new List<User>
+            {
+                new() {DisplayName = "Khaled", UserName = "khaled@test.com", Email = "khaled@test.com"},
+                new() {DisplayName = "Tufan", UserName = "tufan@test.com", Email = "tufan@test.com"},
+                new() {DisplayName = "Mojid", UserName = "mojid@test.com", Email = "mojid@test.com"}
+            };
+
+            foreach (var user in users)
+            {
+                await userManager.CreateAsync(user, "Pa$$w0rd");
+            }
+        }
+
+
         if(context.Rooms.Any()) return;
         await context.Rooms.AddRangeAsync(_rooms);
         await context.SaveChangesAsync();
