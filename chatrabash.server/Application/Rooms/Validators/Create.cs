@@ -4,13 +4,10 @@ using FluentValidation;
 
 namespace Application.Rooms.Validators;
 
-public class Create : AbstractValidator<Rooms.Commands.Create.Command>
+public class Create : BaseRoomsValidator<Rooms.Commands.Create.Command, Commands.Create.Command>
 {
-    public Create()
+    public Create() : base( x => x)
     {
-        RuleFor(x => x.RoomNumber).NotEmpty().WithMessage("Room Number is required!");
-        RuleFor(x => x.FloorNo).NotEmpty().WithMessage("Floor Number is required!");
-        RuleFor(x => x.SeatAvailable).NotEmpty().WithMessage("Cannot be empty");
-        RuleFor(x => x.SeatCapacity).NotNull().GreaterThan(0).WithMessage("Must be more than 0");
+        
     }
 }
