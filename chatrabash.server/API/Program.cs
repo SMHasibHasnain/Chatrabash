@@ -1,6 +1,8 @@
 using Application.Core;
 using Application.Rooms.Queries;
+using Domain;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -22,12 +24,22 @@ builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(MappingProfiles).Assemb
 builder.Services.AddValidatorsFromAssemblyContaining<Application.Rooms.Validators.Create>();
 
 builder.Services.AddTransient<API.Middleware.ExceptionMiddleware>();
+builder.Services.AddIdentityApiEndpoints<User>(opt =>
+{
+    opt.User.RequireUniqueEmail = true;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<AppDbContext>();
+
 
 var app = builder.Build();
 
 app.UseMiddleware<API.Middleware.ExceptionMiddleware>();
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
+app.MapGroup("api").MapIdentityApi<User>();
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
